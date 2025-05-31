@@ -1,0 +1,29 @@
+name: CI - Podman Build and Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Install Podman
+        run: |
+          sudo apt update
+          sudo apt install -y podman
+
+      - name: Enable Podman login to Quay
+        run: |
+          podman login quay.apps-crc.testing \
+            -u ${{ secrets.QUAY_USERNAME }} \
+            -p ${{ secrets.QUAY_PASSWORD }}
+
+      - name: Build and Push with Podman
+        run: |
+          podman build -t quay.apps-crc.testing/${{ secrets.QUAY_USERNAME }}/myapp:latest .
+          podman push quay.apps-crc.testing/${{ secrets.QUAY_USERNAME }}/myapp:latest
