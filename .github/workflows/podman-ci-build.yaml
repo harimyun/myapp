@@ -7,16 +7,11 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted  # ← 중요: 로컬 runner 지정
 
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
-
-      - name: Install Podman
-        run: |
-          sudo apt update
-          sudo apt install -y podman
 
       - name: Login to Quay
         run: |
