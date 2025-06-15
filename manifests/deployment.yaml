@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: quay-quay-quay-enterprise.apps-crc.testing/admin/myapp:v2.0
+          image: quay.quay-enterprise.svc:443/admin/myapp:v2.0
           ports:
             - containerPort: 5000
