@@ -15,11 +15,11 @@ jobs:
 
       - name: Login to Quay
         run: |
-          podman login --tls-verify=false quay.apps-crc.testing \
+          podman login --tls-verify=false quay-quay-quay-enterprise.apps-crc.testing \
             -u ${{ secrets.QUAY_USERNAME }} \
             -p ${{ secrets.QUAY_PASSWORD }}
 
       - name: Build and Push with Podman
         run: |
-          podman build -t quay.apps-crc.testing/${{ secrets.QUAY_USERNAME }}/myapp:latest .
-          podman push --tls-verify=false quay.apps-crc.testing/${{ secrets.QUAY_USERNAME }}/myapp:latest
+          podman build -t qquay-quay-quay-enterprise.apps-crc.testing/${{ secrets.QUAY_USERNAME }}/myapp:v2.0 .
+          podman push --tls-verify=false quay-quay-quay-enterprise.apps-crc.testing/${{ secrets.QUAY_USERNAME }}/myapp:v2.0
