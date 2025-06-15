@@ -21,5 +21,5 @@ jobs:
 
       - name: Build and Push with Podman
         run: |
-          podman build -t qquay-quay-quay-enterprise.apps-crc.testing/${{ secrets.QUAY_USERNAME }}/myapp:v2.0 .
-          podman push --tls-verify=false quay-quay-quay-enterprise.apps-crc.testing/${{ secrets.QUAY_USERNAME }}/myapp:v2.0
+          podman build -t quay-quay-quay-enterprise.apps-crc.testing/admin/myapp:v2.0 .
+          podman push --tls-verify=false quay-quay-quay-enterprise.apps-crc.testing/admin/myapp:v2.0
